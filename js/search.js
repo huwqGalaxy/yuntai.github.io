@@ -1,26 +1,25 @@
 // A local search script with the help of [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
-// Copyright (C) 2015 
+// Copyright (C) 2015
 // Joseph Pan <http://github.com/wzpan>
 // Shuhao Mao <http://github.com/maoshuhao>
 // This library is free software; you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as
 // published by the Free Software Foundation; either version 2.1 of the
 // License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful, but
 // WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301 USA
-// 
+//
 
 var searchFunc = function (path, search_id, content_id) {
   'use strict';
-  var BTN = "<button type='button' class='local-search-close' id='local-search-close'></button>";
   $.ajax({
     url: path,
     dataType: "xml",
@@ -38,8 +37,8 @@ var searchFunc = function (path, search_id, content_id) {
       var $resultContent = document.getElementById(content_id);
 
       $input.addEventListener('input', function () {
-        var str = '<ul class="search-result-list">';
-        var keywords = this.value.trim().toLowerCase().split(/[\s]+/);
+        var str = '<ul class=\"search-result-list\">';
+        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
         $resultContent.innerHTML = "";
         if (this.value.trim().length <= 0) {
           return;
@@ -47,7 +46,7 @@ var searchFunc = function (path, search_id, content_id) {
         // perform local searching
         datas.forEach(function (data) {
           var isMatch = true;
-          // var content_index = [];
+          var content_index = [];
           if (!data.title || data.title.trim() === '') {
             data.title = "Untitled";
           }
@@ -80,7 +79,7 @@ var searchFunc = function (path, search_id, content_id) {
           }
           // show search results
           if (isMatch) {
-            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+            str += "<li><a href='"+ "https://www.nothinglin.ml" + data_url + "' class='search-result-title'>" + data_title + "</a>";
             var content = data.content.trim().replace(/<[^>]+>/g, "");
             if (first_occur >= 0) {
               // cut out 100 characters
@@ -114,14 +113,14 @@ var searchFunc = function (path, search_id, content_id) {
         });
         str += "</ul>";
         if (str.indexOf('<li>') === -1) {
-          return $resultContent.innerHTML = BTN + "<div class=\"search-result-empty\"><p><i class=\"fe fe-tired\"></i> 没有找到内容，更换下搜索词试试吧~<p></div>";
+          return $resultContent.innerHTML =  "<ul><span class='local-search-empty'>没有找到内容，更换下搜索词试试吧~<span></ul>";
         }
-        $resultContent.innerHTML = BTN + str;
+        $resultContent.innerHTML =  str;
       });
     }
   });
-  $(document).on('click', '#local-search-close', function () {
+  $(document).on('click', '#local-search-close', function() {
     $('#local-search-input').val('');
     $('#local-search-result').html('');
   });
-};
+}
