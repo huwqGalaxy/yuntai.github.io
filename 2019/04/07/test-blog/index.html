@@ -185,11 +185,22 @@
 <li>有序性<br>原子性：一个操作不可中断，要么全部执行成功，要么全部执行不成功。提供了互斥访问，同一时刻只能有一个线程来对它进行操作。<br>可见性：当一个线程修改了主内存的共享变量后能够及时的被其他线程观察到<br>有序性：synchronize语义要求线程在访问读写共享变量时只能”串行”执行，因此Synchronize具有有序性。<br>为了性能优化，编译器和处理器会进行指令重排序，因此如果在本线程内观察，所有操作都是有序的；如果在一个线程观察另一个线程，所有的操作都是无序的<h6 id="临界区：同一时刻只能有一个任务访问的代码区"><a href="#临界区：同一时刻只能有一个任务访问的代码区" class="headerlink" title="临界区：同一时刻只能有一个任务访问的代码区"></a>临界区：同一时刻只能有一个任务访问的代码区</h6>互斥量：是一个可以处于两态之一的变量：解锁和加锁<h6 id="信号量Semaphore：又称信号灯，用来在多线程环境下，用来保证两个或多个关键代码不被并发调用。在进入一个关键代码段全必须获取一个信号量，一旦关键代码完成，线程必须释放信号量。其他想要进入该关键代码段的线程必须等待第一个线程释放该信号量。"><a href="#信号量Semaphore：又称信号灯，用来在多线程环境下，用来保证两个或多个关键代码不被并发调用。在进入一个关键代码段全必须获取一个信号量，一旦关键代码完成，线程必须释放信号量。其他想要进入该关键代码段的线程必须等待第一个线程释放该信号量。" class="headerlink" title="信号量Semaphore：又称信号灯，用来在多线程环境下，用来保证两个或多个关键代码不被并发调用。在进入一个关键代码段全必须获取一个信号量，一旦关键代码完成，线程必须释放信号量。其他想要进入该关键代码段的线程必须等待第一个线程释放该信号量。"></a>信号量Semaphore：又称信号灯，用来在多线程环境下，用来保证两个或多个关键代码不被并发调用。在进入一个关键代码段全必须获取一个信号量，一旦关键代码完成，线程必须释放信号量。其他想要进入该关键代码段的线程必须等待第一个线程释放该信号量。</h6><h6 id="信号量和互斥量的区别"><a href="#信号量和互斥量的区别" class="headerlink" title="信号量和互斥量的区别"></a>信号量和互斥量的区别</h6></li>
 <li>互斥量用于线程的互斥，信号量用于线程的同步</li>
 <li>互斥量值只能为0/1，信号量值可以为非负整数。信号量可以实现多个同类线程的互斥和同步</li>
-<li>互斥量的加锁和解锁必须由同一线程分别对应使用，信号量可以由一个线程释放，一个线程得到<br>简单的信号量实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Semaphore &#123;</span><br><span class="line">private boolean signal = false;   //使用signal可以避免信号丢失</span><br><span class="line">public synchronized void take() &#123;</span><br><span class="line">    this.signal = true;</span><br><span class="line">    this.notify();</span><br><span class="line">&#125;</span><br><span class="line">public synchronized void release() throws InterruptedException&#123;</span><br><span class="line">    while(!this.signal) //使用while避免假唤醒</span><br><span class="line">        wait();</span><br><span class="line">    this.signal = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>互斥量的加锁和解锁必须由同一线程分别对应使用，信号量可以由一个线程释放，一个线程得到<br>简单的信号量实现<pre><code>public class Semaphore {
+private boolean signal = false;   //使用signal可以避免信号丢失
+public synchronized void take() {
+  this.signal = true;
+  this.notify();
+}
+public synchronized void release() throws InterruptedException{
+  while(!this.signal) //使用while避免假唤醒
+      wait();
+  this.signal = false;
+  }
+}
+</code></pre>使用场景<br><code>`</code><br>Semaphore semaphore = new Semaphore();<br>SendingThread sender = new SendingThread(semaphore)；<br>ReceivingThread receiver = new ReceivingThread(semaphore);<br>receiver.start();<br>sender.start();</li>
 </ul>
-<p>使用场景<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Semaphore semaphore = new Semaphore();</span><br><span class="line">SendingThread sender = new SendingThread(semaphore)；</span><br><span class="line">ReceivingThread receiver = new ReceivingThread(semaphore);</span><br><span class="line">receiver.start();</span><br><span class="line">sender.start();</span><br><span class="line"></span><br><span class="line">public class SendingThread &#123;</span><br><span class="line">    Semaphore semaphore = null;</span><br><span class="line">    public SendingThread(Semaphore semaphore)&#123;</span><br><span class="line">        this.semaphore = semaphore;</span><br><span class="line">    &#125;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        while(true)&#123;</span><br><span class="line">            //do something, then signal</span><br><span class="line">            this.semaphore.take();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class RecevingThread &#123;</span><br><span class="line">    Semaphore semaphore = null;</span><br><span class="line">    public ReceivingThread(Semaphore semaphore)&#123;</span><br><span class="line">        this.semaphore = semaphore;</span><br><span class="line">    &#125;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        while(true)&#123;</span><br><span class="line">        this.semaphore.release();</span><br><span class="line">        //receive signal, then do something...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>引用自<a href="https://www.jianshu.com/p/c71840db31d2" target="_blank" rel="noopener">https://www.jianshu.com/p/c71840db31d2</a></p>
+<p>public class SendingThread {<br>    Semaphore semaphore = null;<br>    public SendingThread(Semaphore semaphore){<br>        this.semaphore = semaphore;<br>    }<br>    public void run(){<br>        while(true){<br>            //do something, then signal<br>            this.semaphore.take();<br>        }<br>    }<br>}</p>
+<p>public class RecevingThread {<br>    Semaphore semaphore = null;<br>    public ReceivingThread(Semaphore semaphore){<br>        this.semaphore = semaphore;<br>    }<br>    public void run(){<br>        while(true){<br>        this.semaphore.release();<br>        //receive signal, then do something…<br>        }<br>    }<br>}<br><code>`</code><br>引用自<a href="https://www.jianshu.com/p/c71840db31d2" target="_blank" rel="noopener">https://www.jianshu.com/p/c71840db31d2</a></p>
 <h6 id="CAS：Compare-and-Swap"><a href="#CAS：Compare-and-Swap" class="headerlink" title="CAS：Compare and Swap"></a>CAS：Compare and Swap</h6><p>字面比较然后交换<br>java.util.concurrent包中借助CAS实现了区别于Sychronized同步锁的一种乐观锁<br>    compare and swap，无锁算法。无锁编程，即不使用锁的情况下实现多线程之间的变量同步，也就是在没有线程被阻塞的情况下实现变量的同步，所以也叫非阻塞同步。<br>    CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。<br>    CAS的语义是我认为V的值应该是A，如果是，那么将V的值更新为B，否则不修改并告诉V的实际值为多少。<br>    当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。拿当前对象的值和底层的值进行对比，直到对象的值和底层的值一样时才执行对应的操作，不一样就一直取最新的值。<br>CAS死循环内不断尝试修改目标值直到修改成功，如果竞争不激烈修改成功概率很高。竞争激烈的时候失败率很高，不断尝试会影响性能。<br>对于普通double、long类型，JVM允许64位读操作或写操作拆分为2个32位的操作</p>
 <h6 id="wait、sleep、notify、notifyAll"><a href="#wait、sleep、notify、notifyAll" class="headerlink" title="wait、sleep、notify、notifyAll"></a>wait、sleep、notify、notifyAll</h6><p>wait：使一个线程进入等待（阻塞状态），并且释放所持有的对象的锁<br>sleep：使一个正在运行的线程进入睡眠状态，是一个静态方法，调用此方法要处理InterruptException<br>notify：唤醒一个处于等待状态的线程，但是具体唤醒哪一个则不确定，完全取决于JVM<br>notifyAll：唤醒所有等待中的线程，该方法不是把对象的锁还给线程而是让他们竞争，只有获得锁的线程才能进入就绪状态</p>
 <h6 id="wait和sleep的区别"><a href="#wait和sleep的区别" class="headerlink" title="wait和sleep的区别"></a>wait和sleep的区别</h6><ul>
@@ -281,8 +292,8 @@
 </script>
 
         
-        <p class="extra-speaking">原文声明: "转载本站文章请注明作者和出处Nothinglin ，请勿用于任何商业用途"</p>
-        <p>公众号：苦逼的学生仔</p>
+        <p class="extra-speaking">原文声明: "转载本站文章请注明作者和出处YunTai ，请勿用于任何商业用途"</p>
+        <p>公众号：RabbitHo1e</p>
       </div>
     </div>
   </div>
@@ -332,7 +343,7 @@
   twikoo.init({
     envId: 'hexo-2g249e8h3e6144ca',
     el: '#tcomment',
-    region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
+    region: 'ap-shanghai', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
     path: 'window.location.pathname', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
     lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/dev/src/js/utils/i18n/index.js
   })
@@ -427,7 +438,7 @@
     //调用twikoo最新评论主函数
     function newcomment() {
       twikoo.getRecentComments({
-        envId: 'https://twikoo-nine-lemon.vercel.app', // 环境 ID
+        envId: 'https://yuntai-vercel-7mm0cnted-huwqgalaxy.vercel.app/', // 环境 ID
         pageSize: 7, // 获取多少条，默认：10，最大：100
         includeReply: false // 是否包括最新回复，默认：false
       }).then(function(res) {
