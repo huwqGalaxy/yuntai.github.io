@@ -20,7 +20,7 @@
 
 <title>
     
-    shuoshuo |
+    tag: 测试分类3 |
     
     Yuntai
 </title>
@@ -153,26 +153,79 @@
   <!-- 文章主体布局 -->
   <div class="ui container margin-top-30">
     <div class="ui grid stackable">
+      <!-- 文章列表 -->
+<div class="eleven wide column">
+  <div class="ui segment background-thin-yellow">
+    <!-- 标签栏 -->
+    <div class="row-flex flex-wrap tag1-lists">
+      <a href="/tags/" class="tabs-nav">全部</a>
+      
+      <a href="/tags/测试标签1/" class="tabs-nav">测试标签1 (1)</a>
+      
+      <a href="/tags/newTag/" class="tabs-nav">newTag (1)</a>
+      
+      <a href="/tags/测试分类2/" class="tabs-nav">测试分类2 (1)</a>
+      
+      <a href="/tags/测试分类3/" class="tabs-nav">测试分类3 (1)</a>
+      
+      <a class="tabs-nav" id="tag1-next"><i class="angle double right icon"></i>展开更多</a>
+    </div>
+  </div>
+
+  
+  <!-- 列表栏 -->
+  <!-- 文章列表 -->
+  <div class="ui segment background-thin-yellow">
+    <!-- 文章标题 -->
+    <div class="ui segment row-flex-left margin-padding-less border-background-less">
+
+      <h3 class="ui header margin-5">
+        <a href="/2019/04/07/test-blog/">
+          test_blog</a>
+      </h3>
+
+      <div class="ui background-thin-red label margin-5 font-white">
+        
+        <a class="category-link" href="/categories/测试分类/">测试分类</a>
+        
+      </div>
+    </div>
+    <!-- 文章内容简介 -->
+    <div class="ui grid  stackable">
+      <!-- 缩略图 -->
+      <div class="five wide column">
+        <div class="ui card margin-10">
+          <div class="image">
+            <img class="ui small image" src="/img/default.png">
+          </div>
+        </div>
+      </div>
+      <!-- 内容简介 -->
       <div class="eleven wide column">
-  <div class="ui segment background-thin-yellow content">
-    <div class="ui segment background-thin-yellow border-background-less">
-      <div class="ui segment background-thin-yellow border-background-less">
-        <h2 class="ui center aligned icon header">shuoshuo</h2>
-        <!-- 分割线 -->
-        <div class="ui divider title-divider"></div>
-        <div class="ui segment background-thin-yellow border-background-less">
-          <div class="ui segment background-thin-yellow content border-background-less top-15"> <script type="text/javascript" src="https://unpkg.com/artitalk"></script>
-<div id="artitalk_main"></div>
-<script>
-  new Artitalk({
-    appId: 'wGm4HXEBSTpkf8OOnIOy5G5m-MdYXbMMI',
-    appKey: 'ULOIXIf03LnKJUFgYWioFEP8'
-  })
-</script></div>
+        <div class="ui piled segment border-background-less intro">
+          <a href="/2019/04/07/test-blog/">
+            <p>概念JMM
+并发三大性质
+原子性
+可见性
+有序性原子性：一个操作不可中断，要么全部执行成功，要么全部执行不成功。提供了互斥访问，同一时刻只能有一个线程来对它进行操作。可见性：当一个线程修改了主内存的共享变量后能够及时的被其他线程观察到有序性：synchronize语义要求线程在访问读写共享变量时只能”串行”执行，因此Synchronize具有有序性。为了性能优化，编译器和处理器会进行指令重排序，因此如果在本线程......</p>
+          </a>
         </div>
       </div>
     </div>
+    <!-- 分割线 -->
+    <div class="ui divider title-divider"></div>
+    <!-- 文章info -->
+    <div class="row-flex-left">
+      <h5 class="header margin-left-right-10"><i class="address user icon"></i></h5>
+      <h5 class="header margin-left-right-10"><i class="address  calendar alternate outline icon"></i>2019年04月07日</h5>
+      <h5 class="header margin-left-right-10"><i class="address  tag icon"></i>
+        
+        <a class="tag-link" href="/tags/测试分类3/">测试分类3</a>
+        </h5>
+    </div>
   </div>
+  
 </div>
 
       <!-- 侧边栏 -->
