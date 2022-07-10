@@ -267,7 +267,8 @@
       <h4 class="header ">最新留言：</h4>
     </div>
     <!-- <p>这里是饼图文章统计，直观地展示文章的分类数目和其下的文章数~</p> -->
-    <div id="hot-comments"></div>
+    
+  <div id="hot-comments"></div>
   <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.12/dist/twikoo.all.min.js"></script>
   <script type="text/javascript">
@@ -287,7 +288,7 @@
     //调用twikoo最新评论主函数
     function newcomment() {
       twikoo.getRecentComments({
-        envId: 'hexo-2g249e8h3e6144ca', // 环境 ID
+        envId: 'https://twikoo-nine-lemon.vercel.app', // 环境 ID
         pageSize: 7, // 获取多少条，默认：10，最大：100
         includeReply: false // 是否包括最新回复，默认：false
       }).then(function(res) {
@@ -475,7 +476,7 @@
     </div>
     <!-- 分割线 -->
     <div class="ui divider title-divider footer-hide"></div>
-    <div class="ui container margin-top-10 page-footer">www.nothinglin.ml © 2021 | Powered by Hexo | Based on Theme: hexo-theme-Nothinglin by Nothinglin.</div>
+    <div class="ui container margin-top-10 page-footer">2more.life © 2022 | Powered by Hexo | Based on Theme: hexo-theme-Nothinglin by Nothinglin.</div>
     <div class="ui container margin-top-10 page-footer">本博客已运行:<span id="span_dt_dt"></span>天了
 <script language="javascript">
   function show_date_time() {
