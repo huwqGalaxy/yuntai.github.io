@@ -158,14 +158,51 @@
   <div class="ui segment background-thin-yellow content">
     <div class="ui segment background-thin-yellow border-background-less">
       <div class="ui segment background-thin-yellow border-background-less">
-        <h2 class="ui center aligned icon header"><%- page.title %></h2>
+        <h2 class="ui center aligned icon header">comments</h2>
 
         <!-- 分割线 -->
         <div class="ui divider title-divider"></div>
       </div>
 
-      <%- partial('_partial/widget/commentBG')%>
-      <div class="ui segment background-thin-yellow content border-background-less top-15"> <%- page.content %></div>
+      <body>
+  <div class="image-effect-fall-back">
+
+    <div class="share-layer aligncenter">
+
+      <a href="#" class="share-button share-via-facebook">
+        <i class="fa fa-facebook"></i>
+        QQ:763498053
+      </a>
+
+      <a href="#" class="share-button share-via-twitter">
+        <i class="fa fa-twitter"></i>
+        微信:_2life2more
+      </a>
+
+      <a href="#" class="share-button share-via-pinterest" style="color: #14BD03!important">
+        <i class="fa fa-pinterest"></i>
+        公众号：RabbitHo1e
+      </a>
+
+    </div>
+
+    <div class="image-layer" style="left:20%">
+      <img src="/img/nothinglin.jpg" width="500" alt="Kungfu Panda">
+    </div>
+  </div>
+</body>
+      <div class="ui segment background-thin-yellow content border-background-less top-15"> <!-- 来必力City版安装代码 -->
+<p><div id="lv-container" data-id="city" data-uid="MTAyMC81Njc4My8zMzI0Nw=="></div></p>
+<p><script type="text/javascript"><br>   (function(d, s) {<br>       var j, e = d.getElementsByTagName(s)[0];</p>
+<pre><code>   if (typeof LivereTower === &#39;function&#39;) { return; }
+
+   j = d.createElement(s);
+   j.src = &#39;https://cdn-city.livere.com/js/embed.dist.js&#39;;
+   j.async = true;
+
+   e.parentNode.insertBefore(j, e);
+</code></pre><p>   })(document, ‘script’);<br></script><br><br><!-- City版安装代码已完成 --></p>
+</div>
 
 
     </div>
@@ -177,13 +214,39 @@
     <div class="ui segment background-thin-yellow border-background-less">
       <!-- 评论系统 -->
       <!-- 来必力 -->
-      <% if (theme.livere.enable && page.comments){ %>
-      <%- partial('_partial/widget/livere')%>
-      <% } %>
+      
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81Njc4My8zMzI0Nw==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+    </script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+      
       <!-- twikoo -->
-      <% if (theme.twikoo.enable && page.comments){ %>
-      <%- partial('_partial/widget/twikoo')%>
-      <% } %>
+      
+      <div id="tcomment"></div>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.12/dist/twikoo.all.min.js"></script>
+<script>
+  twikoo.init({
+    envId: 'hexo-2g249e8h3e6144ca',
+    el: '#tcomment',
+    region: 'ap-shanghai', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
+    path: 'window.location.pathname', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+    lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/dev/src/js/utils/i18n/index.js
+  })
+</script>
+
+      
 
     </div>
   </div>
