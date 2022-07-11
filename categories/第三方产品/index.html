@@ -20,7 +20,7 @@
 
 <title>
     
-    archive_b |
+    category: 第三方产品 |
     
     Yuntai
 </title>
@@ -156,49 +156,74 @@
       <!-- 文章列表 -->
 <div class="eleven wide column">
   <div class="ui segment background-thin-yellow">
-
-    <a class="ui background-thin-red ribbon label font-size-15">本站全部文章列表：</a>
-
-
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/11]</span>
-        <strong><a href="/2022/07/11/MaxCompute使用-持续更新中/">MaxCompute使用(持续更新中</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/11]</span>
-        <strong><a href="/2022/07/11/面试准备之Java基础-①/">面试准备之Java基础(①)</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/10]</span>
-        <strong><a href="/2022/07/10/ArrayList为什么要实现RandomAccess接口？/">Java ArrayList 为什么要实现 RandomAccess 接口？</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/10]</span>
-        <strong><a href="/2022/07/10/2022下半年计划/">2022下半年计划</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-
+    <!-- 标签栏 -->
+    <div class="row-flex flex-wrap category1-lists">
+      <a href="/categories" class="tabs-nav">全部</a>
+      
+      <a href="/categories/个人计划/" class="tabs-nav">个人计划 (1)</a>
+      
+      <a href="/categories/JAVA/" class="tabs-nav">JAVA (2)</a>
+      
+      <a href="/categories/第三方产品/" class="tabs-nav">第三方产品 (1)</a>
+      
+      <a class="tabs-nav" id="category1-next"><i class="angle double right icon"></i>展开更多</a>
+    </div>
   </div>
+
+  
+  <!-- 列表栏 -->
+  <!-- 文章列表 -->
+  <div class="ui segment background-thin-yellow">
+    <!-- 文章标题 -->
+    <div class="ui segment row-flex-left margin-padding-less border-background-less">
+
+      <h3 class="ui header margin-5">
+        <a href="/2022/07/11/MaxCompute使用-持续更新中/">
+          MaxCompute使用(持续更新中</a>
+      </h3>
+
+      <div class="ui background-thin-red label margin-5 font-white">
+        
+        <a class="category-link" href="/categories/第三方产品/">第三方产品</a>
+        
+      </div>
+    </div>
+    <!-- 文章内容简介 -->
+    <div class="ui grid   stackable">
+      <!-- 缩略图 -->
+      <div class="five wide column">
+        <div class="ui card margin-10">
+          <div class="image">
+            <img class="ui small image" src="/img/default.png">
+          </div>
+        </div>
+      </div>
+      <!-- 内容简介 -->
+      <div class="eleven wide column">
+        <div class="ui piled segment border-background-less intro">
+          <a href="/2022/07/11/MaxCompute使用-持续更新中/">
+            <p>介绍MaxCompute（ODPS）是适用于数据分析场景的企业级SaaS（Software as a Service）模式云数据仓库
+简单使用
+查询表结构 desc 表名;
+查看表分区 show partitions 表名;
+全表导出 tunnel download ${项目名}.${表名}/data_version=20210930,adcode=330100 /本地地址/本次地文件名.csv -h true......</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- 分割线 -->
+    <div class="ui divider title-divider"></div>
+    <!-- 文章info -->
+    <div class="row-flex-left">
+      <h5 class="header margin-left-right-10"><i class="address user icon"></i></h5>
+      <h5 class="header margin-left-right-10"><i class="address  calendar alternate outline icon"></i>2022年07月11日</h5>
+      <h5 class="header margin-left-right-10"><i class="address  tag icon"></i>
+        
+        <a class="tag-link" href="/tags/odps/">odps</a>
+        </h5>
+    </div>
+  </div>
+  
 </div>
 
       <!-- 侧边栏 -->

@@ -20,7 +20,7 @@
 
 <title>
     
-    archive_b |
+    MaxCompute使用(持续更新中 |
     
     Yuntai
 </title>
@@ -155,55 +155,154 @@
     <div class="ui grid stackable">
       <!-- 文章列表 -->
 <div class="eleven wide column">
-  <div class="ui segment background-thin-yellow">
+  <div class="ui segment background-thin-yellow content">
+    <div class="ui segment background-thin-yellow border-background-less">
+      <div class="ui segment background-thin-yellow border-background-less">
+        <h2 class="ui center aligned icon header">MaxCompute使用(持续更新中</h2>
+        <div class="ui segment background-thin-yellow border-background-less">
+          <!-- 文章info -->
+          <div class="row-flex-center">
+            <h5 class="header margin-left-right-10"><i class="address user icon"></i></h5>
+            <h5 class="header margin-left-right-10"><i class="address calendar alternate outline icon"></i>2022年07月11日</h5>
+            <h5 class="header margin-left-right-10"><i class="address eye icon"></i><span id="twikoo_visitors">0</span></h5>
+            <h5 class="header margin-left-right-10"><i class="address folder open outline icon"></i>
+              
+              <a class="category-link" href="/categories/第三方产品/">第三方产品</a>
+              </h5>
+            <h5 class="header margin-left-right-10"><i class="address tag icon"></i>
+              
+              <a class="tag-link" href="/tags/odps/">odps</a>
+              </h5>
+          </div>
+        </div>
+        <!-- 分割线 -->
+        <div class="ui divider title-divider"></div>
+      </div>
+      <div class="ui segment background-thin-yellow content border-background-less top-15"> <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>MaxCompute（ODPS）是适用于数据分析场景的企业级SaaS（Software as a Service）模式云数据仓库</p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ol>
+<li>查询表结构 desc 表名;</li>
+<li>查看表分区 show partitions 表名;</li>
+<li>全表导出 tunnel download ${项目名}.${表名}/data_version=20210930,adcode=330100 /本地地址/本次地文件名.csv -h true -cf true;</li>
+</ol>
+<h2 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h2><p>类似mysql</p>
+<pre><code>select sum(od_cnt) as sum_od_cnt,start_geo7,end_geo7 from 
+表1 where dt = &#39;20220531&#39; and tp=&#39;15mi&#39; and unit_type_no=07 and od_unit_type_no=17 and data_version=&#39;20210930&#39; and adcode=&#39;330100&#39;
+group by start_geo7,end_geo7;
+</code></pre><h2 id="表结果查询导出"><a href="#表结果查询导出" class="headerlink" title="表结果查询导出"></a>表结果查询导出</h2><ol>
+<li>打开配置文件conf/odps_config.ini</li>
+<li>将配置文件<br>use_instance_tunnel改成true</li>
+<li>修改导出行大小<br>instance_tunnel_max_record，我这里是设置了12000</li>
+<li>重新执行查询条件，若执行成功，在打印结果之前会有instanceid</li>
+<li>将结果导出：<br>tunnel download instance://${项目名}/${查询instance} /本地地址/本地表名.csv -h true -cf true;<br>注： -h true意为携带列名<br>-cf true意为指定csv文件，否则会乱行</li>
+</ol>
+</div>
 
-    <a class="ui background-thin-red ribbon label font-size-15">本站全部文章列表：</a>
 
+      <!-- 文章结尾处理 -->
+      <div class="ui divider title-divider"></div>
+      <div class="post-rating">
+        <p>如果喜欢这篇文章，可以给作者评个份哦~</p>
+        <!-- 评分 -->
+        
+        <!-- 文章评论功能 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({
+    widget: 'Rating',
+    id: 30332
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+</script>
 
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/11]</span>
-        <strong><a href="/2022/07/11/MaxCompute使用-持续更新中/">MaxCompute使用(持续更新中</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/11]</span>
-        <strong><a href="/2022/07/11/面试准备之Java基础-①/">面试准备之Java基础(①)</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/10]</span>
-        <strong><a href="/2022/07/10/ArrayList为什么要实现RandomAccess接口？/">Java ArrayList 为什么要实现 RandomAccess 接口？</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-    <ul class="font-size-17 archive-list padding-right-40">
-      <li class="margin-bottom-10">
-        <span class="archive-span-date">[2022/07/10]</span>
-        <strong><a href="/2022/07/10/2022下半年计划/">2022下半年计划</a></strong>
-      </li>
-      <!-- 分割线 -->
-      <div class="ui divider title-divider"></div>
-    </ul>
-    
-
+        
+        <p class="extra-speaking">原文声明: "转载本站文章请注明作者和出处YunTai ，请勿用于任何商业用途"</p>
+        <p>公众号：RabbitHo1e</p>
+      </div>
+    </div>
   </div>
+
+  <!-- 上一篇、下一篇 -->
+  <div class="ui segment background-thin-yellow content">
+    <div class="ui segment background-thin-yellow border-background-less page-prev-next">
+      
+
+      
+      <a href="/2022/07/11/面试准备之Java基础-①/" title="面试准备之Java基础(①)">
+        <span class="page-next">下一篇</span>
+      </a>
+      
+
+    </div>
+  </div>
+
+  <!-- 文章评论功能 -->
+  <div class="ui segment background-thin-yellow content">
+    <div class="ui segment background-thin-yellow border-background-less">
+      <!-- 评论系统 -->
+      <!-- 来必力 -->
+      
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81Njc4My8zMzI0Nw==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+    </script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+      
+      <!-- twikoo -->
+      
+      <div id="tcomment"></div>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.12/dist/twikoo.all.min.js"></script>
+<script>
+  twikoo.init({
+    envId: 'hexo-2g249e8h3e6144ca',
+    el: '#tcomment',
+    region: 'ap-shanghai', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
+    path: 'window.location.pathname', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+    lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/dev/src/js/utils/i18n/index.js
+  })
+</script>
+
+      
+
+    </div>
+  </div>
+
 </div>
 
       <!-- 侧边栏 -->
 <div class="five wide column">
   <!-- 文章目录 -->
+  
+  <!-- 文章内容页面中的目录栏 -->
+<div class="ui segment background-thin-yellow article-toc">
+  <div class="ui segment background-title-red padding-title">
+    <h4 class="header ">文章目录：</h4>
+  </div>
+  <div class="container-toc">
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单使用"><span class="toc-text">简单使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联查询"><span class="toc-text">关联查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表结果查询导出"><span class="toc-text">表结果查询导出</span></a></li></ol>
+  </div>
+</div>
+
   
 
   <div class="ui segment background-thin-yellow">
